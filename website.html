@@ -10,24 +10,41 @@
     <header>
         <h1>Pill Tracker</h1>
     </header>
-    <main>
-        <section id="dashboard">
-            <!-- Display the medications and their details -->
-        </section>
-        <button id="add-medication">+</button>
+    <main id="dashboard">
     </main>
+    <button id="add-medication">+</button>
     <div id="add-med-form" class="modal">
         <div class="modal-content">
             <form id="med-form">
                 <label for="med-name">Medication Name:</label>
                 <input type="text" id="med-name" required>
-                <label for="med-time">Time to take:</label>
-                <input type="time" id="med-time" required>
-                <label for="med-dosage">Dosage:</label>
-                <input type="text" id="med-dosage" required>
-                <label for="med-frequency">Frequency:</label>
-                <input type="text" id="med-frequency" required>
-                <button type="submit">Add Medication</button>
+
+                <label>Type:</label>
+                <div id="med-type">
+                    <button type="button" class="type-option">Pill</button>
+                    <button type="button" class="type-option">Inhaler</button>
+                    <button type="button" class="type-option">Injection</button>
+                </div>
+
+                <label>Time:</label>
+                <div id="med-time">
+                    <button type="button" class="time-option">After Breakfast</button>
+                    <button type="button" class="time-option">After Lunch</button>
+                    <button type="button" class="time-option">After Dinner</button>
+                </div>
+
+                <label>Frequency:</label>
+                <div id="med-frequency">
+                    <button type="button" class="freq-option">Monday</button>
+                    <button type="button" class="freq-option">Tuesday</button>
+                    <button type="button" class="freq-option">Wednesday</button>
+                    <button type="button" class="freq-option">Thursday</button>
+                    <button type="button" class="freq-option">Friday</button>
+                    <button type="button" class="freq-option">Saturday</button>
+                    <button type="button" class="freq-option">Sunday</button>
+                </div>
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>

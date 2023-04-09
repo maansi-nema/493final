@@ -1,49 +1,58 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const addMedicationButton = document.getElementById('add-medication');
-  const addMedForm = document.getElementById('add-med-form');
-  const medForm = document.getElementById('med-form');
-  const dashboard = document.getElementById('dashboard');
+const dashboard = document.getElementById("dashboard");
+const addMedicationButton = document.getElementById("add-medication");
+const addMedForm = document.getElementById("add-med-form");
+const medForm = document.getElementById("med-form");
 
-  function createMedicationElement(name, time, dosage, frequency) {
-      const medElement = document.createElement('div');
-      medElement.innerHTML = `
-          <h2>${name}</h2>
-          <p>Time: ${time}</p>
-          <p>Dosage: ${dosage}</p>
-          <p>Frequency: ${frequency}</p>
-      `;
-      medElement.style.border = '1px solid #ccc';
-      medElement.style.padding = '1rem';
-      medElement.style.borderRadius = '5px';
-      return medElement;
-  }
+addMedicationButton.addEventListener("click", () => {
+    addMedForm.style.display = "block";
+});
 
-  function addMedicationToDashboard(name, time, dosage, frequency) {
-      const medElement = createMedicationElement(name, time, dosage, frequency);
-      dashboard.appendChild(medElement);
-  }
+window.addEventListener("click", (event) => {
+    if (event.target === addMedForm) {
+        addMedForm.style.display = "none";
+    }
+});
 
-  addMedicationButton.addEventListener('click', function () {
-      addMedForm.style.display = 'block';
-  });
+medForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const medName = document.getElementById("med-name").value;
+    const medType = document.querySelector("#med-type .selected").textContent;
+    const medTime = document.querySelector("#med-time .selected").textContent;
+    const medFrequency = Array.from(document.querySelectorAll("#med-frequency .selected")).map(btn => btn.textContent).join(', ');
 
-  addMedForm.addEventListener('click', function (event) {
-      if (event.target === addMedForm) {
-          addMedForm.style.display = 'none';
-      }
-  });
+    const medCard = document.createElement("div");
+    medCard.innerHTML = `
+        <h2>${medName}</h2>
+        <p>Type: ${medType}</p>
+        <p>Time: ${medTime}</p>
+        <p>Frequency: ${medFrequency}</p>
+    `;
 
-  medForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      
-      const name = document.getElementById('med-name').value;
-      const time = document.getElementById('med-time').value;
-      const dosage = document.getElementById('med-dosage').value;
-      const frequency = document.getElementById('med-frequency').value;
+    dashboard.appendChild(medCard);
 
-      addMedicationToDashboard(name, time, dosage, frequency);
+    addMedForm.style.display = "none";
+});
 
-      medForm.reset();
-      addMedForm.style.display = 'none';
-  });
+const medTypeButtons = document.querySelectorAll("#med-type .type-option");
+const medTimeButtons = document.querySelectorAll("#med-time .time-option");
+const medFrequencyButtons = document.querySelectorAll("#med-frequency .freq-option");
+
+medTypeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        medTypeButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+    });
+});
+
+medTimeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        medTimeButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+    });
+});
+
+medFrequencyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        button.classList.toggle("selected");
+    });
 });
