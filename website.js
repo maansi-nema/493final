@@ -1,19 +1,23 @@
-const addMedicationButton = document.querySelector('.add-medication-button');
-const addMedicationModal = document.querySelector('.add-medication-modal');
-const closeMedicationModalButton = document.querySelector('.close-modal-button');
-const tagsContainer = document.querySelector('.tags-container');
+document.addEventListener('DOMContentLoaded', function () {
+  const addMedicationButton = document.getElementById('add-medication');
+  const addMedForm = document.getElementById('add-med-form');
+  const medForm = document.getElementById('med-form');
 
-addMedicationButton.addEventListener('click', () => {
-  addMedicationModal.style.display = 'block';
+  addMedicationButton.addEventListener('click', function () {
+      addMedForm.style.display = 'block';
+  });
+
+  addMedForm.addEventListener('click', function (event) {
+      if (event.target === addMedForm) {
+          addMedForm.style.display = 'none';
+      }
+  });
+
+  medForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      // Add your logic to handle the form submission here
+
+      // Close the modal after submitting the form
+      addMedForm.style.display = 'none';
+  });
 });
-
-closeMedicationModalButton.addEventListener('click', () => {
-  addMedicationModal.style.display = 'none';
-});
-
-tagsContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('tag')) {
-    event.target.classList.toggle('tag-selected');
-  }
-});
-

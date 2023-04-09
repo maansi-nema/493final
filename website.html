@@ -1,55 +1,36 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Pill Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="website.css">
-    <script src="website.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <header>
+    <title>Pill Tracker</title>
+</head>
+<body>
+    <header>
         <h1>Pill Tracker</h1>
-      </header>
-      <main>
-        <div class="dashboard">
-          <div class="medication">
-            <div class="medication-name">Medication Name</div>
-            <div class="medication-tags">
-              <span class="tag">Tag 1</span>
-              <span class="tag">Tag 2</span>
-              <span class="tag">Tag 3</span>
-            </div>
-          </div>
-          <div class="medication">
-            <div class="medication-name">Another Medication</div>
-            <div class="medication-tags">
-              <span class="tag">Tag 4</span>
-              <span class="tag">Tag 5</span>
-            </div>
-          </div>
-          <button class="add-medication-button">+</button>
+    </header>
+    <main>
+        <section id="dashboard">
+            <!-- Display the medications and their details -->
+        </section>
+        <button id="add-medication">+</button>
+    </main>
+    <div id="add-med-form" class="modal">
+        <div class="modal-content">
+            <form id="med-form">
+                <label for="med-name">Medication Name:</label>
+                <input type="text" id="med-name" required>
+                <label for="med-time">Time to take:</label>
+                <input type="time" id="med-time" required>
+                <label for="med-dosage">Dosage:</label>
+                <input type="text" id="med-dosage" required>
+                <label for="med-frequency">Frequency:</label>
+                <input type="text" id="med-frequency" required>
+                <button type="submit">Add Medication</button>
+            </form>
         </div>
-      </main>
-      <footer>
-        <p>&copy; 2023 Pill Tracker</p>
-      </footer>
     </div>
-    <div class="add-medication-modal">
-      <div class="modal-content">
-        <form>
-          <label for="medication-name">Medication Name:</label>
-          <input type="text" id="medication-name">
-          <label for="tags">Tags:</label>
-          <div class="tags-container">
-            <span class="tag">Tag 1</span>
-            <span class="tag">Tag 2</span>
-            <span class="tag">Tag 3</span>
-          </div>
-          <button type="submit">Add Medication</button>
-        </form>
-      </div>
-    </div>
-  </body>
+    <script src="website.js"></script>
+</body>
 </html>
-
