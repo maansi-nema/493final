@@ -45,14 +45,14 @@ theMedicationCard.addEventListener("submit", function submitMedicationForm(event
     medicationCard.querySelector(".modify-medications").addEventListener("click", () => {
         document.getElementById("name-of-medication").value = medicationCard.querySelector("h2").textContent;
 
-        medTypeButtons.forEach((button) => {
+        medicationTypeButtons.forEach((button) => {
             button.classList.remove("selected");
             if (button.textContent === medicationCard.querySelector("p:nth-child(2)").textContent.split(": ")[1]) {
                 button.classList.add("selected");
             }
         });
 
-        medTimeButtons.forEach((button) => {
+        medicationTimeButtons.forEach((button) => {
             button.classList.remove("selected");
             if (button.textContent === medicationCard.querySelector("p:nth-child(3)").textContent.split(": ")[1]) {
                 button.classList.add("selected");
@@ -60,7 +60,7 @@ theMedicationCard.addEventListener("submit", function submitMedicationForm(event
         });
 
         medicationCard.querySelector("p:nth-child(4)").textContent.split(": ")[1].split(", ").forEach(day => {
-            medFrequencyButtons.forEach((button) => {
+            medicationFrequencyButtons.forEach((button) => {
                 if (button.textContent === day) {
                     button.classList.add("selected");
                 }
@@ -79,42 +79,42 @@ theMedicationCard.addEventListener("submit", function submitMedicationForm(event
     addMedicationCard.style.display = "none";
 });
 
-const medTypeButtons = document.querySelectorAll("#type-of-medication .type-option");
-const medTimeButtons = document.querySelectorAll("#time-to-take-medication .time-option");
-const medFrequencyButtons = document.querySelectorAll("#day-to-take-medication .day-option");
+const medicationTypeButtons = document.querySelectorAll("#type-of-medication .type-option");
+const medicationTimeButtons = document.querySelectorAll("#time-to-take-medication .time-option");
+const medicationFrequencyButtons = document.querySelectorAll("#day-to-take-medication .day-option");
 
 /* add event listener for selecting type */
-medTypeButtons.forEach((button) => {
+medicationTypeButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        medTypeButtons.forEach((btn) => btn.classList.remove("selected"));
+        medicationTypeButtons.forEach((btn) => btn.classList.remove("selected"));
         button.classList.add("selected");
     });
 });
 /* add event listener for selecting time */
-medTimeButtons.forEach((button) => {
+medicationTimeButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        medTimeButtons.forEach((btn) => btn.classList.remove("selected"));
+        medicationTimeButtons.forEach((btn) => btn.classList.remove("selected"));
         button.classList.add("selected");
     });
 });
 /* add event listener for selecting freq*/
-medFrequencyButtons.forEach((button) => {
+medicationFrequencyButtons.forEach((button) => {
     button.addEventListener("click", () => {
         button.classList.toggle("selected");
     });
 });
 /* update medication card with current selections */
 function updateMedicationCard(medicationCard) {
-    const medName = document.getElementById("name-of-medication").value;
-    const medType = document.querySelector("#type-of-medication .selected").textContent;
-    const medTime = document.querySelector("#time-to-take-medication .selected").textContent;
-    const medFrequency = Array.from(document.querySelectorAll("#day-to-take-medication .selected")).map(btn => btn.textContent).join(', ');
+    const theMedicationName = document.getElementById("name-of-medication").value;
+    const whatTypeOfMedication = document.querySelector("#type-of-medication .selected").textContent;
+    const whatTimeToTakeMedication = document.querySelector("#time-to-take-medication .selected").textContent;
+    const whatDayToTakeMedication = Array.from(document.querySelectorAll("#day-to-take-medication .selected")).map(btn => btn.textContent).join(', ');
 
     medicationCard.innerHTML = `
-        <h2>${medName}</h2>
-        <p>Type: ${medType}</p>
-        <p>Time: ${medTime}</p>
-        <p>Frequency: ${medFrequency}</p>
+        <h2>${theMedicationName}</h2>
+        <p>Type: ${whatTypeOfMedication}</p>
+        <p>Time: ${whatTimeToTakeMedication}</p>
+        <p>Frequency: ${whatDayToTakeMedication}</p>
         <button class="remove-medications">Delete</button>
         <button class="modify-medications">Modify</button>
     `;
@@ -125,24 +125,24 @@ function updateMedicationCard(medicationCard) {
 
     /* add event listener for delete and modify buttons */
     medicationCard.querySelector(".modify-medications").addEventListener("click", () => {
-        document.getElementById("name-of-medication").value = medName;
+        document.getElementById("name-of-medication").value = theMedicationName;
 
-        medTypeButtons.forEach((button) => {
+        medicationTypeButtons.forEach((button) => {
             button.classList.remove("selected");
-            if (button.textContent === medType) {
+            if (button.textContent === whatTypeOfMedication) {
                 button.classList.add("selected");
             }
         });
 
-        medTimeButtons.forEach((button) => {
+        medicationTimeButtons.forEach((button) => {
             button.classList.remove("selected");
-            if (button.textContent === medTime) {
+            if (button.textContent === whatTimeToTakeMedication) {
                 button.classList.add("selected");
             }
         });
 
-        medFrequency.split(', ').forEach(day => {
-            medFrequencyButtons.forEach((button) => {
+        whatDayToTakeMedication.split(', ').forEach(day => {
+            medicationFrequencyButtons.forEach((button) => {
                 if (button.textContent === day) {
                     button.classList.add("selected");
                 }
