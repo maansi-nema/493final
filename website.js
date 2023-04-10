@@ -25,13 +25,6 @@ function createModifyListener(medCard) {
 medForm.addEventListener("submit", function submitMedForm(event) {
     event.preventDefault();
     const medCard = document.createElement("div");
-    medCard.innerHTML = `
-        <h2>${medName}</h2>
-        <p>Type: ${medType}</p>
-        <p>Time: ${medTime}</p>
-        <p>Frequency: ${medFrequency}</p>
-        <button class="delete-button">Delete</button>
-    `;
 
     updateMedCard(medCard);
     
@@ -68,10 +61,6 @@ medForm.addEventListener("submit", function submitMedForm(event) {
         addMedForm.style.display = "block";
         medForm.removeEventListener("submit", submitMedForm);
         medForm.addEventListener("submit", modifySubmit);
-    });
-
-    medCard.querySelector(".delete-button").addEventListener("click", () => {
-        medCard.remove();
     });
 
     dashboard.appendChild(medCard);
