@@ -90,3 +90,40 @@ button {
   display: block;
   margin-bottom: 0.5rem;
   }
+
+  .delete-btn {
+    background-color: #FF7F7F; /* Red background */
+    color: #FFF; /* White text */
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .delete-btn:focus {
+    outline: none;
+  }
+  
+  .delete-btn:hover {
+    background-color: #FF4D4D; /* Darker red on hover */
+  }
+
+  .modify-btn {
+    background-color: #AEDFF7; /* Baby blue background */
+    color: #FFF; /* White text */
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    }
+    
+    .modify-btn:focus {
+    outline: none;
+    }
+    
+    .modify-btn:hover {
+    background-color: #0079A1; /* Darker blue on hover */
+    }  
