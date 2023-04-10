@@ -25,7 +25,6 @@ function createModifyListener(medCard) {
 medForm.addEventListener("submit", function submitMedForm(event) {
     event.preventDefault();
     const medCard = document.createElement("div");
-<<<<<<< HEAD
     medCard.innerHTML = `
         <h2>${medName}</h2>
         <p>Type: ${medType}</p>
@@ -33,7 +32,6 @@ medForm.addEventListener("submit", function submitMedForm(event) {
         <p>Frequency: ${medFrequency}</p>
         <button class="delete-button">Delete</button>
     `;
-=======
 
     updateMedCard(medCard);
     
@@ -71,7 +69,6 @@ medForm.addEventListener("submit", function submitMedForm(event) {
         medForm.removeEventListener("submit", submitMedForm);
         medForm.addEventListener("submit", modifySubmit);
     });
->>>>>>> bd6b4bab0352a78cc088ae0da9c7c31c7ef2fc43
 
     medCard.querySelector(".delete-button").addEventListener("click", () => {
         medCard.remove();
@@ -105,8 +102,6 @@ medFrequencyButtons.forEach((button) => {
         button.classList.toggle("selected");
     });
 });
-<<<<<<< HEAD
-=======
 
 function updateMedCard(medCard) {
     const medName = document.getElementById("med-name").value;
@@ -165,4 +160,3 @@ function updateMedCard(medCard) {
 
     addMedForm.style.display = "none";
 }
->>>>>>> bd6b4bab0352a78cc088ae0da9c7c31c7ef2fc43
