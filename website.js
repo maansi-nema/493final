@@ -1,18 +1,24 @@
-const dashboard = document.getElementById("dashboard");
+/* store variables */
+const dashboard = document.getElementById("the-pill-dashboard");
 const addMedicationButton = document.getElementById("add-medication");
 const addMedForm = document.getElementById("add-med-form");
 const medForm = document.getElementById("med-form");
 
+/* add event listeners */
+
+/* when medication button is clicked, the medication form is displayed */
 addMedicationButton.addEventListener("click", () => {
     addMedForm.style.display = "block";
 });
 
+/* when medication button is not clicked, the medication form is not displayed */
 window.addEventListener("click", (event) => {
     if (event.target === addMedForm) {
         addMedForm.style.display = "none";
     }
 });
 
+/* when the form is submitted, the medication card is created */
 function createModifyListener(medCard) {
     return function (event) {
         event.preventDefault();
@@ -22,18 +28,21 @@ function createModifyListener(medCard) {
     };
 }
 
+/* new medication card */
 medForm.addEventListener("submit", function submitMedForm(event) {
     event.preventDefault();
     const medCard = document.createElement("div");
 
     updateMedCard(medCard);
     
-    medCard.querySelector(".delete-btn").addEventListener("click", () => {
+    /* delete the medication card */
+    medCard.querySelector(".remove-medications").addEventListener("click", () => {
         medCard.remove();
     });
-
+    
+    /* modify the medication card */
     const modifySubmit = createModifyListener(medCard);
-    medCard.querySelector(".modify-btn").addEventListener("click", () => {
+    medCard.querySelector(".modify-medications").addEventListener("click", () => {
         document.getElementById("med-name").value = medCard.querySelector("h2").textContent;
 
         medTypeButtons.forEach((button) => {
@@ -57,14 +66,16 @@ medForm.addEventListener("submit", function submitMedForm(event) {
                 }
             });
         });
-
+        /* display form */
         addMedForm.style.display = "block";
         medForm.removeEventListener("submit", submitMedForm);
         medForm.addEventListener("submit", modifySubmit);
     });
 
+    /* add medication to dashboard */
     dashboard.appendChild(medCard);
-
+    
+    /* hide form */
     addMedForm.style.display = "none";
 });
 
@@ -72,26 +83,27 @@ const medTypeButtons = document.querySelectorAll("#med-type .type-option");
 const medTimeButtons = document.querySelectorAll("#med-time .time-option");
 const medFrequencyButtons = document.querySelectorAll("#med-frequency .freq-option");
 
+/* add event listener for selecting type */
 medTypeButtons.forEach((button) => {
     button.addEventListener("click", () => {
         medTypeButtons.forEach((btn) => btn.classList.remove("selected"));
         button.classList.add("selected");
     });
 });
-
+/* add event listener for selecting time */
 medTimeButtons.forEach((button) => {
     button.addEventListener("click", () => {
         medTimeButtons.forEach((btn) => btn.classList.remove("selected"));
         button.classList.add("selected");
     });
 });
-
+/* add event listener for selecting freq*/
 medFrequencyButtons.forEach((button) => {
     button.addEventListener("click", () => {
         button.classList.toggle("selected");
     });
 });
-
+/* update medication card with current selections */
 function updateMedCard(medCard) {
     const medName = document.getElementById("med-name").value;
     const medType = document.querySelector("#med-type .selected").textContent;
@@ -103,15 +115,16 @@ function updateMedCard(medCard) {
         <p>Type: ${medType}</p>
         <p>Time: ${medTime}</p>
         <p>Frequency: ${medFrequency}</p>
-        <button class="delete-btn">Delete</button>
-        <button class="modify-btn">Modify</button>
+        <button class="remove-medications">Delete</button>
+        <button class="modify-medications">Modify</button>
     `;
 
-    medCard.querySelector(".delete-btn").addEventListener("click", () => {
+    medCard.querySelector(".remove-medications").addEventListener("click", () => {
         medCard.remove();
     });
 
-    medCard.querySelector(".modify-btn").addEventListener("click", () => {
+    /* add event listener for delete and modify buttons */
+    medCard.querySelector(".modify-medications").addEventListener("click", () => {
         document.getElementById("med-name").value = medName;
 
         medTypeButtons.forEach((button) => {
