@@ -1,4 +1,5 @@
 /* store variables */
+/* note: i don't understand the btn code control f "btn" */
 const dashboard = document.getElementById("the-pill-dashboard");
 const addMedicationButton = document.getElementById("add-medication");
 const addMedicationCard = document.getElementById("add-a-medication-form");
