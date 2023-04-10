@@ -26,7 +26,12 @@ medForm.addEventListener("submit", (event) => {
         <p>Type: ${medType}</p>
         <p>Time: ${medTime}</p>
         <p>Frequency: ${medFrequency}</p>
+        <button class="delete-button">Delete</button>
     `;
+
+    medCard.querySelector(".delete-button").addEventListener("click", () => {
+        medCard.remove();
+    });
 
     dashboard.appendChild(medCard);
 
