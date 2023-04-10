@@ -1,65 +1,65 @@
 /* store variables */
 const dashboard = document.getElementById("the-pill-dashboard");
 const addMedicationButton = document.getElementById("add-medication");
-const addMedForm = document.getElementById("add-med-form");
-const medForm = document.getElementById("med-form");
+const addMedicationCard = document.getElementById("add-a-medication-form");
+const theMedicationCard = document.getElementById("the-medication-form");
 
 /* add event listeners */
 
 /* when medication button is clicked, the medication form is displayed */
 addMedicationButton.addEventListener("click", () => {
-    addMedForm.style.display = "block";
+    addMedicationCard.style.display = "block";
 });
 
 /* when medication button is not clicked, the medication form is not displayed */
 window.addEventListener("click", (event) => {
-    if (event.target === addMedForm) {
-        addMedForm.style.display = "none";
+    if (event.target === addMedicationCard) {
+        addMedicationCard.style.display = "none";
     }
 });
 
 /* when the form is submitted, the medication card is created */
-function createModifyListener(medCard) {
+function createModifyListener(medicationCard) {
     return function (event) {
         event.preventDefault();
-        updateMedCard(medCard);
-        medForm.removeEventListener("submit", modifySubmit);
-        medForm.addEventListener("submit", submitMedForm);
+        updateMedicationCard(medicationCard);
+        theMedicationCard.removeEventListener("submit", modifySubmit);
+        theMedicationCard.addEventListener("submit", submitMedicationForm);
     };
 }
 
 /* new medication card */
-medForm.addEventListener("submit", function submitMedForm(event) {
+theMedicationCard.addEventListener("submit", function submitMedicationForm(event) {
     event.preventDefault();
-    const medCard = document.createElement("div");
+    const medicationCard = document.createElement("div");
 
-    updateMedCard(medCard);
+    updateMedicationCard(medicationCard);
     
     /* delete the medication card */
-    medCard.querySelector(".remove-medications").addEventListener("click", () => {
-        medCard.remove();
+    medicationCard.querySelector(".remove-medications").addEventListener("click", () => {
+      medicationCard.remove();
     });
     
     /* modify the medication card */
-    const modifySubmit = createModifyListener(medCard);
-    medCard.querySelector(".modify-medications").addEventListener("click", () => {
-        document.getElementById("med-name").value = medCard.querySelector("h2").textContent;
+    const modifySubmit = createModifyListener(medicationCard);
+    medicationCard.querySelector(".modify-medications").addEventListener("click", () => {
+        document.getElementById("name-of-medication").value = medicationCard.querySelector("h2").textContent;
 
         medTypeButtons.forEach((button) => {
             button.classList.remove("selected");
-            if (button.textContent === medCard.querySelector("p:nth-child(2)").textContent.split(": ")[1]) {
+            if (button.textContent === medicationCard.querySelector("p:nth-child(2)").textContent.split(": ")[1]) {
                 button.classList.add("selected");
             }
         });
 
         medTimeButtons.forEach((button) => {
             button.classList.remove("selected");
-            if (button.textContent === medCard.querySelector("p:nth-child(3)").textContent.split(": ")[1]) {
+            if (button.textContent === medicationCard.querySelector("p:nth-child(3)").textContent.split(": ")[1]) {
                 button.classList.add("selected");
             }
         });
 
-        medCard.querySelector("p:nth-child(4)").textContent.split(": ")[1].split(", ").forEach(day => {
+        medicationCard.querySelector("p:nth-child(4)").textContent.split(": ")[1].split(", ").forEach(day => {
             medFrequencyButtons.forEach((button) => {
                 if (button.textContent === day) {
                     button.classList.add("selected");
@@ -67,21 +67,21 @@ medForm.addEventListener("submit", function submitMedForm(event) {
             });
         });
         /* display form */
-        addMedForm.style.display = "block";
-        medForm.removeEventListener("submit", submitMedForm);
-        medForm.addEventListener("submit", modifySubmit);
+        addMedicationCard.style.display = "block";
+        theMedicationCard.removeEventListener("submit", submitMedicationForm);
+        theMedicationCard.addEventListener("submit", modifySubmit);
     });
 
     /* add medication to dashboard */
-    dashboard.appendChild(medCard);
+    dashboard.appendChild(medicationCard);
     
     /* hide form */
-    addMedForm.style.display = "none";
+    addMedicationCard.style.display = "none";
 });
 
-const medTypeButtons = document.querySelectorAll("#med-type .type-option");
-const medTimeButtons = document.querySelectorAll("#med-time .time-option");
-const medFrequencyButtons = document.querySelectorAll("#med-frequency .freq-option");
+const medTypeButtons = document.querySelectorAll("#type-of-medication .type-option");
+const medTimeButtons = document.querySelectorAll("#time-to-take-medication .time-option");
+const medFrequencyButtons = document.querySelectorAll("#day-to-take-medication .day-option");
 
 /* add event listener for selecting type */
 medTypeButtons.forEach((button) => {
@@ -104,13 +104,13 @@ medFrequencyButtons.forEach((button) => {
     });
 });
 /* update medication card with current selections */
-function updateMedCard(medCard) {
-    const medName = document.getElementById("med-name").value;
-    const medType = document.querySelector("#med-type .selected").textContent;
-    const medTime = document.querySelector("#med-time .selected").textContent;
-    const medFrequency = Array.from(document.querySelectorAll("#med-frequency .selected")).map(btn => btn.textContent).join(', ');
+function updateMedicationCard(medicationCard) {
+    const medName = document.getElementById("name-of-medication").value;
+    const medType = document.querySelector("#type-of-medication .selected").textContent;
+    const medTime = document.querySelector("#time-to-take-medication .selected").textContent;
+    const medFrequency = Array.from(document.querySelectorAll("#day-to-take-medication .selected")).map(btn => btn.textContent).join(', ');
 
-    medCard.innerHTML = `
+    medicationCard.innerHTML = `
         <h2>${medName}</h2>
         <p>Type: ${medType}</p>
         <p>Time: ${medTime}</p>
@@ -119,13 +119,13 @@ function updateMedCard(medCard) {
         <button class="modify-medications">Modify</button>
     `;
 
-    medCard.querySelector(".remove-medications").addEventListener("click", () => {
-        medCard.remove();
+    medicationCard.querySelector(".remove-medications").addEventListener("click", () => {
+      medicationCard.remove();
     });
 
     /* add event listener for delete and modify buttons */
-    medCard.querySelector(".modify-medications").addEventListener("click", () => {
-        document.getElementById("med-name").value = medName;
+    medicationCard.querySelector(".modify-medications").addEventListener("click", () => {
+        document.getElementById("name-of-medication").value = medName;
 
         medTypeButtons.forEach((button) => {
             button.classList.remove("selected");
@@ -149,16 +149,16 @@ function updateMedCard(medCard) {
             });
         });
 
-        addMedForm.style.display = "block";
-        medForm.removeEventListener("submit", submitMedForm);
+        addMedicationCard.style.display = "block";
+        theMedicationCard.removeEventListener("submit", submitMedicationForm);
 
-        medForm.addEventListener("submit", function updateSubmit(e) {
+        theMedicationCard.addEventListener("submit", function updateSubmit(e) {
             e.preventDefault();
-            updateMedCard(medCard);
-            medForm.removeEventListener("submit", updateSubmit); 
-            medForm.addEventListener("submit", submitMedForm); 
+            updateMedicationCard(medicationCard);
+            theMedicationCard.removeEventListener("submit", updateSubmit); 
+            theMedicationCard.addEventListener("submit", submitMedicationForm); 
         });
     });
 
-    addMedForm.style.display = "none";
+    addMedicationCard.style.display = "none";
 }
