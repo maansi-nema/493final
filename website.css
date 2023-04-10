@@ -60,6 +60,19 @@ button {
   width: 100%;
 }
 
+#type-label{
+  padding-top: 12px;
+  padding-left: 8px;
+}
+
+#name-of-medication{
+  padding-left: 8px;
+  font-size: xx-large;
+  border-radius: 5px;
+  border: 2px solid pink;
+  margin-left: 5px;
+}
+
 
 button:focus {
   outline: none;
