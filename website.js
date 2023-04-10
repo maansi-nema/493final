@@ -110,12 +110,18 @@ function updateMedicationCard(medicationCard) {
     const whatTypeOfMedication = document.querySelector("#type-of-medication .selected").textContent;
     const whatTimeToTakeMedication = document.querySelector("#time-to-take-medication .selected").textContent;
     const whatDayToTakeMedication = Array.from(document.querySelectorAll("#day-to-take-medication .selected")).map(btn => btn.textContent).join(', ');
-
+    // vandan's changes 
+    const pillPurpose = document.getElementById("pill-purpose").value;
+    const pillSideEffects = document.getElementById("pill-side-effects").value;
+    const pillPrecautions = document.getElementById("pill-precautions").value;
     medicationCard.innerHTML = `
         <h2>${theMedicationName}</h2>
         <p>Type: ${whatTypeOfMedication}</p>
         <p>Time: ${whatTimeToTakeMedication}</p>
         <p>Frequency: ${whatDayToTakeMedication}</p>
+        <p>Purpose: ${pillPurpose}</p>
+        <p>Side Effects: ${pillSideEffects}</p>
+        <p>Precautions: ${pillPrecautions}</p>
         <button class="remove-medications">Delete</button>
         <button class="modify-medications">Modify</button>
     `;
