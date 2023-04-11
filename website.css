@@ -29,11 +29,6 @@ main {
   justify-content: center;
 }
 
-#button-container {
-  position: relative;
-  display: inline-block;
-}
-
 button {
   font-size: 20px;
   background-color: #ff9cc7;
@@ -45,19 +40,6 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
-}
-
-.help-message {
-  position: relative;
-  bottom: -600px;
-  right: -1680px;
-  visibility: visible;
-  font-size: 20px;
-  background-color: #f2f2f2;
-  padding: 5px;
-  border-radius: 5px;
-  text-align: center;
-  width: 100%;
 }
 
 #type-label{
@@ -96,6 +78,26 @@ button.day-option.selected {
 #add-a-medication-form {
   overflow-y: scroll;
 }
+
+#button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.help-message {
+  position: fixed;
+  bottom: 80px;
+  right: 10px;
+  visibility: visible;
+  font-size: 20px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  width: 12%;
+}
+
 #add-medication {
   position: fixed;
   bottom: 20px;
