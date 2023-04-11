@@ -184,9 +184,11 @@ function updateMedicationCard(medicationCard) {
         if (button.innerHTML === "Complete") {
             button.style.background = 'green';
             button.innerHTML = "DONE!";
+            medicationCard.setAttribute("style", "background-color:#D3D3D3; opacity:0.8; border-radius:25px; padding:30px;");
         }else{
             button.innerHTML = "Complete";
             button.style.background = 'red';
+            medicationCard.setAttribute("style", "background-color:white; opacity:0.8; border-radius:25px; padding:30px;")
         }
       });
     });
