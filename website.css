@@ -93,6 +93,9 @@ button.day-option.selected {
   /* Darker blue for selected options */
 }
 
+#add-a-medication-form {
+  overflow-y: scroll;
+}
 #add-medication {
   position: fixed;
   bottom: 20px;
