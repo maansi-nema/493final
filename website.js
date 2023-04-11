@@ -16,6 +16,21 @@ addMedicationButton.addEventListener("click", () => {
 window.addEventListener("click", (event) => {
     if (event.target === addMedicationCard) {
         addMedicationCard.style.display = "none";
+        if (addMedicationCard.style.display == "none") {
+            document.getElementById("name-of-medication").value = ""; 
+            document.getElementById("pill-purpose").value = "";
+            document.getElementById("pill-side-effects").value = "";
+            document.getElementById("pill-precautions").value = "";
+            medicationFrequencyButtons.forEach((button) => { 
+                button.classList.remove("selected"); 
+            }); 
+            medicationTimeButtons.forEach((button) => {
+                button.classList.remove("selected"); 
+            }); 
+            medicationTypeButtons.forEach((button) => { 
+                button.classList.remove("selected"); 
+            });
+        }
     }
 });
 
@@ -33,6 +48,7 @@ function createModifyListener(medicationCard) {
 theMedicationCard.addEventListener("submit", function submitMedicationForm(event) {
     event.preventDefault();
     const medicationCard = document.createElement("div");
+    medicationCard.setAttribute("style", "background-color:white; opacity:0.8; border-radius:25px; padding:30px;");
 
     updateMedicationCard(medicationCard);
     
@@ -78,6 +94,21 @@ theMedicationCard.addEventListener("submit", function submitMedicationForm(event
     
     /* hide form */
     addMedicationCard.style.display = "none";
+    if (addMedicationCard.style.display == "none") {
+        document.getElementById("name-of-medication").value = ""; 
+        document.getElementById("pill-purpose").value = "";
+        document.getElementById("pill-side-effects").value = "";
+        document.getElementById("pill-precautions").value = "";
+        medicationFrequencyButtons.forEach((button) => { 
+            button.classList.remove("selected"); 
+        }); 
+        medicationTimeButtons.forEach((button) => {
+            button.classList.remove("selected"); 
+        }); 
+        medicationTypeButtons.forEach((button) => { 
+            button.classList.remove("selected"); 
+        });
+    }
 });
 
 const medicationTypeButtons = document.querySelectorAll("#type-of-medication .type-option");
@@ -179,6 +210,20 @@ function updateMedicationCard(medicationCard) {
             theMedicationCard.addEventListener("submit", submitMedicationForm); 
         });
     });
-
     addMedicationCard.style.display = "none";
+    if (addMedicationCard.style.display == "none") {
+        document.getElementById("name-of-medication").value = ""; 
+        document.getElementById("pill-purpose").value = "";
+        document.getElementById("pill-side-effects").value = "";
+        document.getElementById("pill-precautions").value = "";
+        medicationFrequencyButtons.forEach((button) => { 
+            button.classList.remove("selected"); 
+        }); 
+        medicationTimeButtons.forEach((button) => {
+            button.classList.remove("selected"); 
+        }); 
+        medicationTypeButtons.forEach((button) => { 
+            button.classList.remove("selected"); 
+        });
+    }
 }
