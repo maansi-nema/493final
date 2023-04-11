@@ -158,6 +158,9 @@ button.day-option.selected {
   cursor: pointer;
   margin-top: 20px; 
 }
+.complete-medications:focus {
+  outline: none;
+}
 
 .remove-medications {
   background-color: #FF7F7F; 

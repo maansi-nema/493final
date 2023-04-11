@@ -163,15 +163,18 @@ function updateMedicationCard(medicationCard) {
       medicationCard.remove();
     });
 
-    medicationCard.querySelector(".complete-medications").addEventListener("click", () => {
-        const completeBtn = document.getElementById("complete-btn");
-        if (completeBtn.innerHTML === "Complete") {
-            completeBtn.style.background = 'green';
-            completeBtn.innerHTML = "DONE!";
+    const buttons = medicationCard.querySelectorAll(".complete-medications");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", function() {
+        if (button.innerHTML === "Complete") {
+            button.style.background = 'green';
+            button.innerHTML = "DONE!";
         }else{
-            completeBtn.innerHTML = "Complete";
-            completeBtn.style.background = 'red';
+            button.innerHTML = "Complete";
+            button.style.background = 'red';
         }
+      });
     });
 
     /* add event listener for delete and modify buttons */
