@@ -4,9 +4,23 @@ const dashboard = document.getElementById("the-pill-dashboard");
 const addMedicationButton = document.getElementById("add-medication");
 const addMedicationCard = document.getElementById("add-a-medication-form");
 const theMedicationCard = document.getElementById("the-medication-form");
+const increaseFontSizeButton = document.getElementById("increase-font-size");
+const decreaseFontSizeButton = document.getElementById("decrease-font-size");
+const documentBody = document.querySelector("body");
 
 /* add event listeners */
-
+//when increaseFontButton is clicked, increase the front size of the entire page
+increaseFontSizeButton.addEventListener("click", () => {
+    const fontsize = parseFloat(window.getComputedStyle(documentBody).fontSize);
+    const newFontSize = fontsize + 4;
+    documentBody.style.fontSize = `${newFontSize}px`;
+});
+//when increaseFontButton is clicked, increase the front size of the entire page
+decreaseFontSizeButton.addEventListener("click", () => {
+    const fontsize = parseFloat(window.getComputedStyle(documentBody).fontSize);
+    const newFontSize = fontsize - 4;
+    documentBody.style.fontSize = `${newFontSize}px`;
+});
 /* when medication button is clicked, the medication form is displayed */
 addMedicationButton.addEventListener("click", () => {
     addMedicationCard.style.display = "block";

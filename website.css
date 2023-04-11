@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  font-size: 14px;
   background-color:  #ffe1ee;
   color: #333;
   margin: 0;
@@ -207,4 +208,26 @@ button.day-option.selected {
 .modify-medications:hover {
   background-color: #0079A1;
   /* Darker blue on hover */
+}
+#increase-font-size {
+  position: fixed;
+  font-size: 20px;
+  background-color: #8fdaff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  left: 0px;
+  top: 180px;
+}
+#decrease-font-size {
+  position: fixed;
+  font-size: 20px;
+  background-color: #8fdaff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  left: 0px;
+  top: 240px;
 }
