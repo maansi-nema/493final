@@ -209,6 +209,19 @@ button.day-option.selected {
   background-color: #0079A1;
   /* Darker blue on hover */
 }
+.font-help-message{
+  position: fixed;
+  top: 115px;
+  left: 5px;
+  visibility: visible;
+  font-size: 20px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  width: 12%;
+}
+
 #increase-font-size {
   position: fixed;
   font-size: 20px;
@@ -218,16 +231,16 @@ button.day-option.selected {
   margin-right: 10px;
   cursor: pointer;
   left: 0px;
-  top: 180px;
+  top: 200px;
 }
 #decrease-font-size {
   position: fixed;
   font-size: 20px;
   background-color: #8fdaff;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 12px;
   margin-right: 10px;
   cursor: pointer;
   left: 0px;
-  top: 240px;
+  top: 260px;
 }
