@@ -65,7 +65,7 @@ button {
   padding-left: 8px;
 }
 
-#name-of-medication{
+#name-of-medication, #pill-purpose, #pill-side-effects, #pill-precautions{
   padding-left: 8px;
   font-size: xx-large;
   border-radius: 5px;
@@ -139,6 +139,19 @@ button.day-option.selected {
 .pill-tracker-content label {
   display: block;
   margin-bottom: 10px; 
+}
+
+.complete-medications {
+  background-color: #ff0000; 
+  color: white; 
+  border: none;
+  padding-top: 5px; 
+  padding-right: 10px; 
+  padding-bottom: 5px; 
+  padding-left: 10px; 
+  font-size: 15px; 
+  cursor: pointer;
+  margin-top: 20px; 
 }
 
 .remove-medications {

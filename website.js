@@ -114,6 +114,7 @@ function updateMedicationCard(medicationCard) {
     const pillPurpose = document.getElementById("pill-purpose").value;
     const pillSideEffects = document.getElementById("pill-side-effects").value;
     const pillPrecautions = document.getElementById("pill-precautions").value;
+
     medicationCard.innerHTML = `
         <h2>${theMedicationName}</h2>
         <p>Type: ${whatTypeOfMedication}</p>
@@ -124,10 +125,22 @@ function updateMedicationCard(medicationCard) {
         <p>Precautions: ${pillPrecautions}</p>
         <button class="remove-medications">Delete</button>
         <button class="modify-medications">Modify</button>
+        <button class="complete-medications" id="complete-btn">Complete</button>
     `;
 
     medicationCard.querySelector(".remove-medications").addEventListener("click", () => {
       medicationCard.remove();
+    });
+
+    medicationCard.querySelector(".complete-medications").addEventListener("click", () => {
+        const completeBtn = document.getElementById("complete-btn");
+        if (completeBtn.innerHTML === "Complete") {
+            completeBtn.style.background = 'green';
+            completeBtn.innerHTML = "DONE!";
+        }else{
+            completeBtn.innerHTML = "Complete";
+            completeBtn.style.background = 'red';
+        }
     });
 
     /* add event listener for delete and modify buttons */
