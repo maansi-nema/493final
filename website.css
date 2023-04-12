@@ -26,7 +26,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  /* Gap between cards EDIT!!*/
   justify-content: center;
 }
 
@@ -66,13 +65,7 @@ button.time-option,
 button.day-option {
   background-color: #8fdaff;
   /* Baby blue background /
-  color: #FFF; / White text */
 }
-
-button.type-option.selected,
-button.time-option.selected,
-button.day-option.selected {
-  background-color: #0079A1;
   /* Darker blue for selected options */
 }
 
